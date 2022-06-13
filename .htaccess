@@ -1,0 +1,13 @@
+#Inpedir que se muestren mis directorios
+
+Options All -Indexes
+
+#URL Amigables
+#Activar RewriteEngine
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} !\.(?:css|png|jpe?g|gif|js)$ [NC,OR]
+RewriteCond %{REQUEST_URI} !index\.php [NC]
+
+RewriteRule ^(\w+)\/?([-_A-Za-z0-9]+)?\/?([-_A-Za-z0-9]+)?$ index.php?action=$1&id=$2&status=$3
