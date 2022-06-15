@@ -1,0 +1,9 @@
+<?php 
+	unset($_SESSION['id']);
+	unset($_SESSION['email']);
+	unset($_SESSION['es_admin']);
+	unset($_SESSION['domicilio']);
+	unset($_SESSION['telefono']);
+	unset($_SESSION['nombre_completo']);
+	header("location:/login");
+ ?>
