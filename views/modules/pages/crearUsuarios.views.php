@@ -1,6 +1,9 @@
 <main id="crearUsuario">
 	<!-- el contenido de la pagina  -->
-	
+<?php 
+	echo $_GET["action"];
+
+ ?>	
 	<div class="crearUsuario">
 		<h1>Crear Usuarios</h1>
 		<form>
