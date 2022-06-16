@@ -4,30 +4,48 @@
 	echo $_GET["action"];
 
  ?>	
-	<div class="crearUsuario">
-		<h1>Crear Usuarios</h1>
-		<form>
-			<label for="nombre">Nombre completo</label>
-			<input type="text">
+	<form class="container">
+
+		<div class="row">
+			<h1>Crear usuarios</h1>
+
+			<div class="col-12">
+				<label for="">Nombre completo</label>
+				<input class="controls" type="text" name="name">
+			</div>
 			
-			<label for="email">Email</label>
-			<input type="email">
+			<div class="col-12">
+				<label for="">Email</label>
+				<input class="controls" type="email" name="email">
+			</div>
+			
+			
+			<div class="col-6">
+				<label for="">Direccion</label>
+				<input class="controls" type="text" name="direction">
+			</div>
+			
+			<div class="col-6">
+				<label for="">Telefono</label>
+				<input class="controls" type="text" name="telephone">
+			</div>
+			
+			<div class="col-6">
+				<label for="">Fecha de nacimiento</label>
+				<input class="controls" type="date" name="birthDate">
+			</div>
+			
+			<div class="col-6" >
+				<label for="">DNI</label>
+				<input class="controls" type="text">
+			</div>
+			
+			<div>
+				<button class="buttons">CARGAR</button>
+			</div>
+			
+		</div>
 
-			<label for="direccion">Direccion</label>
-			<input type="text">
-
-			<label for="telefono">Telefono</label>
-			<input type="number">
-
-			<label for="fecha">Fecha de nacimiento</label>
-			<input type="date">
-
-			<label for="dni">DNI</label>
-			<input type="number">
-
-			<input type="submit" value="CARGAR">
-
-		</form>
-	</div>
+	</form>
 	
 </main>

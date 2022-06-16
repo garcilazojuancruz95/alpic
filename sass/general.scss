@@ -4,7 +4,10 @@ body {
     padding: 0;
     background: url(../img/456.jpg) no-repeat center top;
     background-size: cover;
-    font-family: sans-serif;
+    font-family: arial, sans-serif;
     height: 100vh;
-    
+}
+
+* {
+    box-sizing: border-box;
 }
