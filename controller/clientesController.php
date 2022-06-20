@@ -1,9 +1,9 @@
 <?php 
 //Logica,validacion,procesos y envios a vista o modelo
-class UsuariosController
+class ClientesController
 {
-	//Metodo NO-statico
-	public function crearUsuario()
+	//Metodo NO-statico 
+	public function crearCliente()
 	{
 		$name = $_POST["name"];
 		$email = $_POST["email"];
@@ -16,7 +16,14 @@ class UsuariosController
 		//$array["name"] en vez de $array[0]
 		
 		$array = ["name"=>$name,"email"=>$email,"address"=>$address,"phone"=>$phone,"birthDate"=>$birthDate,"dni"=>$dni];
-		$respuesta = UsuariosModel::crearUsuario($array);
+		$respuesta = ClientesModel::crearCliente($array);
+		//Si $respuesta tiene true significa que se guardo el usuario, false surgio un error.
+		if ($respuesta) {
+			header("location:/CLASES/alpic/listaCliente");
+		}else{
+			//Redireccionar a una pagina.
+			header("location:CLASES/alpic/crearCliente/errorDB");
+		}
 	}
 	public function listaUsuario()
 	{

@@ -85,7 +85,7 @@ body {
   color: #fff;
 }
 
-#crearUsuario .container {
+#crearCliente .container {
   font-size: 20px;
   text-align: center;
   background: white;
@@ -94,7 +94,7 @@ body {
   border-radius: 15px;
   color: #a4a4a4;
 }
-#crearUsuario .container h1 {
+#crearCliente .container h1 {
   margin: 0;
   text-align: center;
   height: 40px;
@@ -106,7 +106,7 @@ body {
   height: 60px;
   color: #fff;
 }
-#crearUsuario .container .controls {
+#crearCliente .container .controls {
   width: 100%;
   border: none;
   margin-bottom: 15px;
@@ -114,7 +114,7 @@ body {
   background: #c4c4c4;
   color: white;
 }
-#crearUsuario .container .buttons {
+#crearCliente .container .buttons {
   font-size: 25px;
   width: 100%;
   height: 40px;

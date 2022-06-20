@@ -1,8 +1,8 @@
-<main id="crearUsuario">
+ <main id="crearCliente">
 	<!-- el contenido de la pagina  -->
 	<form class="container" method="post">
 		<div class="row">
-			<h1>Crear usuarios</h1>
+			<h1>Crear Cliente</h1>
 			<div class="col-12">
 				<label for="">Nombre completo</label>
 				<input class="controls form-control" type="text" name="name">
@@ -40,8 +40,8 @@
 		<?php 
 			//Instancia de una clase, osea copiarla y meterla en una variable.
 			if (isset($_POST["enviar"])) {
-				$a = new UsuariosController;
-				$a->crearUsuario();
+				$a = new ClientesController;
+				$a->crearCliente();
 			}
 			//Con este codigo de arriba verificamos que ejecute la instancia y el metodo crearUsuario solamente cuando el usuario toca el el boton CARGAR.
 		 ?>
