@@ -43,9 +43,75 @@ class ClientesModel
 		else{
 			return false;
 		}
-		
+	}
+	public static function getClienteById($array){
+		$sql = Conexion::conectar()->prepare("SELECT * FROM clientes WHERE id = :id ORDER BY id DESC");
+		$sql->bindParam(":id",$array["id"],PDO::PARAM_INT);
+
+		if( $sql->execute()){
+			$respuesta = $sql->fetch();
+		}
+		else{
+			$respuesta = 0;
+		}
+		return $respuesta;
+	}
+	public static function listaCliente(){
+		$sql = Conexion::conectar()->prepare("SELECT * FROM clientes ORDER BY id DESC");
+		if( $sql->execute()){
+			$respuesta = $sql->fetchAll();
+		}
+		else{
+			$respuesta = 0;
+		}
+		return $respuesta;
+	}
+	public static function eliminarCliente($array){
+		$sql = Conexion::conectar()->prepare("DELETE FROM clientes WHERE id = :id");
+		$sql->bindParam(":id",$array["id"],PDO::PARAM_INT);
+
+		if( $sql->execute()){
+			$respuesta = true;
+		}
+		else{
+			$respuesta = false;
+		}
+		return $respuesta;
 	}
 }
 /*ESTUDIAR pdo y de pdo (->execute(), ->prepare() , ->bindParam() */
+
+
+
+/*->fetchAll trae todas las filas del SELECT en forma de array multidimensional.
+			Esto significa arrays de arrays.
+
+			//MYSQL tabla: clientes (muchas filas)
+				//------------------------------------
+				//columnas | id |   name   | password
+				//------------------------------------
+				//			 1    juancruz    123asd
+				//			 2    ema    	  123asd
+				//			 3    martin      123asd
+				//
+				//PHP PDO 
+				//SE CONVIERTE en un array cuando usamos ->fetch()
+				//
+				//
+				//array(
+				[0]array("id"=> 1,"name"=> "juancruz","password"=>"123asd"),
+				[1]array("id"=> 2,"name"=> "ema","password"=>"123asd"),
+				[2]array("id"=> 3,"name"=> "martin","password"=>"123asd"),
+				);
+				//
+				acceder a un id de un cliente
+				$array[1]["id"]
+				//
+
+
+			*/
+
+
 ?>
+
 

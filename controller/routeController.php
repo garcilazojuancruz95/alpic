@@ -5,7 +5,7 @@
 		public static function enlace()
 		{
 			$nombre = "emanuel";
-			$arrayPages = ["crearUsuarios","index","listaUsuarios","login","editarUsuarios"];
+			$arrayPages = ["crearCliente","index","listaClientes","login","editarCliente"];
 			//si existe action
 			if (isset($_GET["action"])) {
 

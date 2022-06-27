@@ -24,6 +24,9 @@ require_once("conexion/conexion.php");
 				//
 				//array("id"=> 1,"name"=> "juancruz","password"=>"123asd");
 				//
+				//Acceder a un id 
+				//
+				//$array["id"]
 				//
 				$respuesta =  $sql->fetch();
 			}else{

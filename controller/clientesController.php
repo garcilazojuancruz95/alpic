@@ -19,10 +19,10 @@ class ClientesController
 		$respuesta = ClientesModel::crearCliente($array);
 		//Si $respuesta tiene true significa que se guardo el usuario, false surgio un error.
 		if ($respuesta) {
-			header("location:/CLASES/alpic/listaCliente");
+			header("location:/listaCliente");
 		}else{
 			//Redireccionar a una pagina.
-			header("location:CLASES/alpic/crearCliente/errorDB");
+			header("location:/crearCliente/errorDB");
 		}
 	}
 	public function listaUsuario()
