@@ -12,6 +12,10 @@ body {
   height: 100vh;
 }
 
+input {
+  color: black !important;
+}
+
 * {
   box-sizing: border-box;
 }

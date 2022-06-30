@@ -44,6 +44,24 @@ class ClientesModel
 			return false;
 		}
 	}
+	public static function editarCliente($array)
+	{
+		$sql = Conexion::conectar()->prepare("UPDATE clientes SET email = :email,name = :name, dni = :dni, phone = :phone, birthDate = :birthDate , address = :address WHERE id = :id");
+		$sql->bindParam(":email",$array["email"],PDO::PARAM_STR);//Un string o fecha
+		$sql->bindParam(":name",$array["name"],PDO::PARAM_STR);
+		$sql->bindParam(":dni",$array["dni"],PDO::PARAM_INT);//Un numero
+		$sql->bindParam(":phone",$array["phone"],PDO::PARAM_INT);
+		$sql->bindParam(":birthDate",$array["birthDate"],PDO::PARAM_STR);
+		$sql->bindParam(":address",$array["address"],PDO::PARAM_STR);
+		$sql->bindParam(":id",$array["id"],PDO::PARAM_INT);
+
+		if($sql->execute()){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	public static function getClienteById($array){
 		$sql = Conexion::conectar()->prepare("SELECT * FROM clientes WHERE id = :id ORDER BY id DESC");
 		$sql->bindParam(":id",$array["id"],PDO::PARAM_INT);

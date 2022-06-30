@@ -3,6 +3,7 @@
  	 ?>
 	<!-- el contenido de la pagina  -->
 	<form class="container" method="post">
+		<input type="hidden" value="<?= $_GET["id"] ?>" name="id">
 		<div class="row">
 			<h1>Editar Cliente</h1>
 			<div class="col-12">
@@ -43,7 +44,7 @@
 			//Instancia de una clase, osea copiarla y meterla en una variable.
 			if (isset($_POST["enviar"])) {
 				$a = new ClientesController;
-				$a->editarCliente();
+				$a->setCliente("editar");
 			}
 			//Con este codigo de arriba verificamos que ejecute la instancia y el metodo crearUsuario solamente cuando el usuario toca el el boton CARGAR.
 		 ?>

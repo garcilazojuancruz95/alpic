@@ -1,9 +1,25 @@
-<main>
-	<H1>LISTA DE Clientes</H1>
+<?php if(isset($_GET["id"]) AND $_GET['id'] == "exito_crear"): ?>
+	<script>
+		Swal.fire(
+		  'Creacion realizadas!',
+		  'Cliente agregado!',
+		  'success'
+		)
+	</script>
+<?php endif; ?>
+<?php if(isset($_GET["id"]) AND $_GET['id'] == "exito_editar"): ?>
+	<script>
+		Swal.fire(
+		  'Cambios realizados!',
+		  'Cliente editado!',
+		  'success'
+		)
+	</script>
+<?php endif; ?>
+<main class="container mt-3">
+	<h1 class="text-light">LISTA DE Clientes</h1>
 	<!-- el contenido de la pagina  -->
 	<?php $listaClientes = ClientesModel::listaCliente();?>
-
-
 	<table class="table">
 		<tr class="text-light">
 			<th>Id</th>

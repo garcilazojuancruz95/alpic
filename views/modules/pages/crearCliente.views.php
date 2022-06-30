@@ -41,7 +41,7 @@
 			//Instancia de una clase, osea copiarla y meterla en una variable.
 			if (isset($_POST["enviar"])) {
 				$a = new ClientesController;
-				$a->crearCliente();
+				$a->setCliente("crear");
 			}
 			//Con este codigo de arriba verificamos que ejecute la instancia y el metodo crearUsuario solamente cuando el usuario toca el el boton CARGAR.
 		 ?>
