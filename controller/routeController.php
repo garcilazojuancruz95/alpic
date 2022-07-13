@@ -4,11 +4,10 @@
 	{
 		public static function enlace()
 		{
-			$nombre = "emanuel";
-			$arrayPages = ["crearCliente","index","listaClientes","login","editarCliente"];
+			//lista de paginas permitidas 
+			$arrayPages = ["crearCliente","index","listaClientes","login","editarCliente","crearProducto","listaProductos","editaProducto","crearCategoria","editarCategoria"];
 			//si existe action
 			if (isset($_GET["action"])) {
-
 				if (in_array($_GET["action"], $arrayPages) == true) {
 					$page = $_GET["action"].".views.php";
 				}
@@ -22,9 +21,6 @@
 			}
 
 			require_once("views/modules/pages/".$page);
-		}
-		public static function limpiar(){
-
 		}
 	}
 ?>

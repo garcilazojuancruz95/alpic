@@ -1,4 +1,4 @@
- <main id="crearCliente">
+ <main id="crearCliente" class="formulario">
 	<!-- el contenido de la pagina  -->
 	<form class="container" method="post">
 		<div class="row">

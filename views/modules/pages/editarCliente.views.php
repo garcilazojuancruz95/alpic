@@ -1,4 +1,4 @@
- <main id="editarCliente">
+ <main id="editarCliente" class="formulario">
  	<?php $cliente = ClientesModel::getClienteById(array("id"=>$_GET["id"]));
  	 ?>
 	<!-- el contenido de la pagina  -->

@@ -89,47 +89,21 @@ input {
   color: #fff;
 }
 
-#crearCliente .container {
-  font-size: 20px;
-  text-align: center;
-  background: white;
-  margin-top: 100px;
-  box-shadow: 7px 13px 37px #000;
-  border-radius: 15px;
-  color: #a4a4a4;
-}
 #crearCliente .container h1 {
-  margin: 0;
-  text-align: center;
-  height: 40px;
-  padding-top: 10px;
-  margin-bottom: 20px;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
-  background-color: #16e3c8;
-  height: 60px;
-  color: #fff;
-}
-#crearCliente .container .controls {
-  width: 100%;
-  border: none;
-  margin-bottom: 15px;
-  padding: 11px 10px;
-  background: #c4c4c4;
-  color: white;
+  background-color: #16e3c8 !important;
 }
 #crearCliente .container .buttons {
-  font-size: 25px;
-  width: 100%;
-  height: 40px;
-  background-color: #16e3c8;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  margin-bottom: 16px;
+  background-color: #16e3c8 !important;
 }
 
-#editarCliente .container {
+#editarCliente .container h1 {
+  background-color: #089EEC !important;
+}
+#editarCliente .container .buttons {
+  background-color: #089EEC !important;
+}
+
+.formulario .container {
   font-size: 20px;
   text-align: center;
   background: white;
@@ -138,7 +112,7 @@ input {
   border-radius: 15px;
   color: #a4a4a4;
 }
-#editarCliente .container h1 {
+.formulario .container h1 {
   margin: 0;
   text-align: center;
   height: 40px;
@@ -146,11 +120,11 @@ input {
   margin-bottom: 20px;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
-  background-color: #089EEC;
+  background-color: #16e3c8;
   height: 60px;
   color: #fff;
 }
-#editarCliente .container .controls {
+.formulario .container .controls {
   width: 100%;
   border: none;
   margin-bottom: 15px;
@@ -158,11 +132,11 @@ input {
   background: #c4c4c4;
   color: white;
 }
-#editarCliente .container .buttons {
+.formulario .container .buttons {
   font-size: 25px;
   width: 100%;
   height: 40px;
-  background-color: #089EEC;
+  background-color: #16e3c8;
   border-radius: 5px;
   border: none;
   color: #fff;

@@ -41,8 +41,18 @@
             Productos
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Crear producto</a></li>
-            <li><a class="dropdown-item" href="#">Lista de producto</a></li>
+            <li><a class="dropdown-item" href="/crearProducto">Crear producto</a></li>
+            <li><a class="dropdown-item" href="/listaProductos">Lista de producto</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#"></a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categorías
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/crearCategoria">Crear categoría</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#"></a></li>
           </ul>
