@@ -4,10 +4,11 @@ class ProductosModel
 {
 	public static function crearProducto ($array)
 	{
-		$sql = Conexion::conectar()->prepare("INSERT INTO productos (nameProd, tipo) VALUES(:nameProd,:tipo)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO productos (name, stock, idCategoria) VALUES(:name,:stock,:idCategoria)");
 	
-		$sql->bindParam(":nameProd",$array["nameProd"],PDO::PARAM_STR);
-		$sql->bindParam(":tipo",$array["tipo"],PDO::PARAM_STR);
+		$sql->bindParam(":name",$array["name"],PDO::PARAM_STR);
+		$sql->bindParam(":idCategoria",$array["idCategoria"],PDO::PARAM_STR);
+		$sql->bindParam(":stock",$array["stock"],PDO::PARAM_STR);
 
 		if( $sql->execute() ){
 			return true;
@@ -41,8 +42,8 @@ class ProductosModel
 		}
 		return $respuesta;
 	}
-	public static function listaProductos(){
-		$sql = Conexion::conectar()->prepare("SELECT * FROM productos ORDER BY id DESC");
+	public static function listaProducto(){
+		$sql = Conexion::conectar()->prepare("SELECT * FROM productos as prod INNER JOIN categorias as cat ON prod.idCategoria = cat.id ORDER BY prod.id DESC");
 		if( $sql->execute()){
 			$respuesta = $sql->fetchAll();
 		}
