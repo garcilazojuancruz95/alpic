@@ -15,7 +15,10 @@
 
             <div class="col-12">
                 <label for="">Categoría</label>
-                <select class="controls form-control"><option value="">Seleccione una categoría</option></select>
+                <select class="controls form-control" name="idCategoria">
+					<option value="">Seleccione una categoría</option> 
+					<option value="1">Silla</option>
+				</select>
             </div>
 
 			<div>

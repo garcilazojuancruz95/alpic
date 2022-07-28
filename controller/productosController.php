@@ -9,13 +9,14 @@
 */
 class ProductosController
 {
-	public function setProducto($tipo)
+	//funcion o metodo
+	public function setProductos($tipo)
 	{
 		var_dump($_POST);
-		$nameProd = $_POST["name"];
-		$tipo = $_POST["tipo"];
-		$tipoProducto = $_POST["tipoProducto"];
-		$array = ["nameProd"=>$nameProd,"tipo"=>$tipo,];
+		$nameProd = $_POST["nameProd"];
+		$stock = $_POST["stock"];
+		$idCategoria = $_POST["idCategoria"];
+		$array = ["nameProd"=>$nameProd,"stock"=>$stock, "idCategoria"=>$idCategoria];
 		if ($tipo == "editar") {
 			$array["id"] = $_POST["id"];
 			$respuesta = ProductosModel::editarProducto($array);
@@ -26,13 +27,15 @@ class ProductosController
 				/* header("location:/editarProducto/errorDB"); */
 			}
 		}
+		//Comentar los header cuando estas resolviendo problemas, porque cuando haces header desaparecen los errores antes de poder verlos
+		//quitar los comentarios de header SOLAMENTE cuando todo esta andando perfecto.
 		else if($tipo == "crear") {
 			$respuesta = ProductosModel::crearProducto($array);
 			if ($respuesta) {
-				/* header("location:/listaProductos/exito_crear"); */
+				header("location:/listaProductos/exito_crear");
 			}
 			else{
-				/* header("location:/crearProducto/errorDB"); */
+				header("location:/crearProducto/errorDB");
 			}
 		}
 	}

@@ -4,10 +4,11 @@ class ProductosModel
 {
 	public static function crearProducto ($array)
 	{
-		$sql = Conexion::conectar()->prepare("INSERT INTO productos (nameProd, tipo) VALUES(:nameProd,:tipo)");
+		$sql = Conexion::conectar()->prepare("INSERT INTO productos (producto, stock, idCategoria) VALUES(:producto, :stock, :idCategoria)");
 	
-		$sql->bindParam(":nameProd",$array["nameProd"],PDO::PARAM_STR);
-		$sql->bindParam(":tipo",$array["tipo"],PDO::PARAM_STR);
+		$sql->bindParam(":producto",$array["nameProd"],PDO::PARAM_STR);
+		$sql->bindParam(":stock",$array["stock"],PDO::PARAM_INT);
+		$sql->bindParam(":idCategoria",$array["idCategoria"],PDO::PARAM_INT);
 
 		if( $sql->execute() ){
 			return true;
