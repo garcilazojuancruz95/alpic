@@ -3,26 +3,26 @@ class CategoriaController
 {
 	public function setCategoria($tipo)
 	{
-		var_dump($_POST);
+
 		$nameCategoria = $_POST["nameCategoria"];
 		$array = ["nameCategoria"=>$nameCategoria];
 		if ($tipo == "editar") {
 			$array["id"] = $_POST["id"];
 			$respuesta = CategoriaModel::editarCategoria($array);
 			if ($respuesta) {
-				/* header("location:/listaProductos/exito_editar"); */
+				 header("location:/listaCategorias/exito_editar");
 			}
 			else{
-				/* header("location:/editarProducto/errorDB"); */
+				 header("location:/editarCategoria/errorDB");
 			}
 		}
 		else if($tipo == "crear") {
 			$respuesta = CategoriaModel::crearCategoria($array);
 			if ($respuesta) {
-				/* header("location:/listaProductos/exito_crear"); */
+				 header("location:/listaCategorias/exito_crear");
 			}
 			else{
-				/* header("location:/crearProducto/errorDB"); */
+				 header("location:/crearCategoria/errorDB");
 			}
 		}
 	}

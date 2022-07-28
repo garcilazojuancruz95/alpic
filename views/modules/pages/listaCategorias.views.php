@@ -2,7 +2,7 @@
 	<script>
 		Swal.fire(
 		  'Carga realizada!',
-		  'Producto agregado!',
+		  'Categoria agregada!',
 		  'success'
 		)
 	</script>
@@ -11,59 +11,59 @@
 	<script>
 		Swal.fire(
 		  'Cambios realizados!',
-		  'Producto editado!',
+		  'Categoria editada!',
 		  'success'
 		)
 	</script>
 <?php endif; ?>
 <main class="container mt-3">
-	<h1 class="text-light">LISTA DE PRODUCTOS</h1>
 	<!-- el contenido de la pagina  -->
-	<?php $listaProductos = ProductosModel::listaProducto();?>
-	<table class="table">
-		<tr class="text-light">
-			<th>ID</th>
-			<th>Producto</th>
-			<th>Stock</th>
-			<th>Categoría</th>
-			<th>Acciones</th>
-		</tr>
-		<?php 
-					if (count($listaProductos) == 0) {
+	<?php $listaCategoria = CategoriaModel::listaCategoria();?>
+	<section class=" row justify-content-center">
+		<div class="col-md-8">
+			<h1 class="text-light">LISTA DE CATEGORIAS</h1>
+			<table class="table">
+				<tr class="text-light">
+					<th>id</th>
+					<th>Nombre</th>
+					<th>Acciones</th>
+				</tr>
+				<?php 
+					if (count($listaCategoria) == 0) {
 						echo "
 							<tr>
-								<td colspan='5' class='text-center fw-bold py-3'> Ningun producto encontrado.</td>
+								<td colspan='3' class='text-center fw-bold py-3'> Ninguna categoria encontrada.</td>
 							</tr>
 						 ";
 					}
 				 ?>
-	<?php foreach ($listaProductos as $key => $value): ?>
-		<tr class="text-light">
-			<td><?= $value["id"] ?></td>
-			<td><?= $value["name"] ?></td>
-			<td><?= $value["stock"] ?></td>
-			<td><?= $value["categoria"] ?></td>
-			<td>
-				<div class="dropdown">
-				  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-				    menu
-				  </a>
+			<?php foreach ($listaCategoria as $key => $value): ?>
+				<tr class="text-light">
+					<td><?= $value["id"] ?></td>
+					<td><?= $value["categoria"] ?></td>
+					<td>
+						<div class="dropdown">
+						  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+						    menu
+						  </a>
 
-				  <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
-				    <li><a class="dropdown-item link-primary fw-bold" href="/editarProducto/<?= $value["id"] ?>"> <i class="fas fa-edit"></i> Editar</a></li>
-				    <li>
-				    	<a class="dropdown-item link-danger fw-bold" data-bs-toggle="modal" data-bs-target="#modal-eliminar" 
-				    	onclick="modalEliminar(<?= $value["id"] ?>,'<?= $value["nameProd"] ?>')"> 
-				    		<i class="fas fa-times"></i> Eliminar
-				    	</a>
-				    </li>
-				    <li><a class="dropdown-item" href="#"></a></li>
-				  </ul>
-				</div>
-				</td>
-		</tr>
-	<?php endforeach ?>
-	</table>
+						  <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+						    <li><a class="dropdown-item link-primary fw-bold" href="/editarProducto/<?= $value["id"] ?>"> <i class="fas fa-edit"></i> Editar</a></li>
+						    <li>
+						    	<a class="dropdown-item link-danger fw-bold" data-bs-toggle="modal" data-bs-target="#modal-eliminar" 
+						    	onclick="modalEliminar(<?= $value["id"] ?>,'<?= $value["nameProd"] ?>')"> 
+						    		<i class="fas fa-times"></i> Eliminar
+						    	</a>
+						    </li>
+						    <li><a class="dropdown-item" href="#"></a></li>
+						  </ul>
+						</div>
+						</td>
+				</tr>
+			<?php endforeach ?>
+			</table>
+		</div>
+	</section>
 </main>
 <script>
 	function modalEliminar(id,nombre){
@@ -103,13 +103,3 @@
     </div>
   </div>
 </div>
-
-<?php 
-	foreach ($listaProductos as $key => $value) {
-		echo "<span></span>";
-	}
- ?>
-
- <?php foreach ($listaProductos as $key => $value): ?>
-		<span></span>
-	<?php endforeach; ?>

@@ -13,18 +13,18 @@ class ProductosController
 	public function setProductos($tipo)
 	{
 		var_dump($_POST);
-		$nameProd = $_POST["nameProd"];
-		$stock = $_POST["stock"];
+		$name = $_POST["name"];
 		$idCategoria = $_POST["idCategoria"];
-		$array = ["nameProd"=>$nameProd,"stock"=>$stock, "idCategoria"=>$idCategoria];
+		$stock = $_POST["stock"];
+		$array = ["name"=>$name,"idCategoria"=>$idCategoria,"stock"=>$stock];
 		if ($tipo == "editar") {
 			$array["id"] = $_POST["id"];
 			$respuesta = ProductosModel::editarProducto($array);
 			if ($respuesta) {
-				/* header("location:/listaProductos/exito_editar"); */
+				header("location:/listaProductos/exito_editar");
 			}
 			else{
-				/* header("location:/editarProducto/errorDB"); */
+				header("location:/editarProducto/errorDB");
 			}
 		}
 		//Comentar los header cuando estas resolviendo problemas, porque cuando haces header desaparecen los errores antes de poder verlos

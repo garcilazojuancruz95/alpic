@@ -43,8 +43,6 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/crearProducto">Crear producto</a></li>
             <li><a class="dropdown-item" href="/listaProductos">Lista de producto</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#"></a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -53,8 +51,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/crearCategoria">Crear categoría</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="/listaCategorias">Lista de Categorias</a></li>
           </ul>
         </li>
       </ul>
