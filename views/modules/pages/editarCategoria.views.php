@@ -1,6 +1,5 @@
 <main id="editarCliente" class="formulario">
- 	<?php $cliente = ClientesModel::getClienteById(array("id"=>$_GET["id"]));
- 	 ?>
+ 	<?php $categoria = CategoriaModel::getCategoriaById(array("id"=>$_GET["id"]));?>
 	<!-- el contenido de la pagina  -->
 	<form class="container" method="post">
 		<input type="hidden" value="<?= $_GET["id"] ?>" name="id">
@@ -8,7 +7,7 @@
 			<h1>Editar Categoría</h1>
 			<div class="col-12">
 				<label for="">Categoría</label>
-				<input class="controls form-control" value="<?= $producto["nameProd"] ?>" type="text" name="nameProd">
+				<input class="controls form-control" value="<?= $categoria["categoria"] ?>" type="text" name="categoria">
 			</div>
 			
 			<div>
@@ -17,8 +16,8 @@
 		</div>
 		<?php 
 			if (isset($_POST["enviar"])) {
-				$a = new CategoriasController;
-				$a->setProducto("editar");
+				$a = new CategoriaController;
+				$a->setCategoria("editar");
 			}
 		 ?>
 	</form>

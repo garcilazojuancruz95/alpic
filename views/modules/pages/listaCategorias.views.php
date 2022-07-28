@@ -16,6 +16,15 @@
 		)
 	</script>
 <?php endif; ?>
+<?php if(isset($_GET["id"]) AND $_GET['id'] == "success_eliminar"): ?>
+	<script>
+		Swal.fire(
+		  'Eliminado exitosamente!',
+		  'Categoria Eliminada!',
+		  'success'
+		)
+	</script>
+<?php endif; ?>
 <main class="container mt-3">
 	<!-- el contenido de la pagina  -->
 	<?php $listaCategoria = CategoriaModel::listaCategoria();?>
@@ -48,10 +57,10 @@
 						  </a>
 
 						  <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
-						    <li><a class="dropdown-item link-primary fw-bold" href="/editarProducto/<?= $value["id"] ?>"> <i class="fas fa-edit"></i> Editar</a></li>
+						    <li><a class="dropdown-item link-primary fw-bold" href="/editarCategoria/<?= $value["id"] ?>"> <i class="fas fa-edit"></i> Editar</a></li>
 						    <li>
 						    	<a class="dropdown-item link-danger fw-bold" data-bs-toggle="modal" data-bs-target="#modal-eliminar" 
-						    	onclick="modalEliminar(<?= $value["id"] ?>,'<?= $value["nameProd"] ?>')"> 
+						    	onclick="modalEliminar(<?= $value["id"] ?>,'<?= $value["categoria"] ?>')"> 
 						    		<i class="fas fa-times"></i> Eliminar
 						    	</a>
 						    </li>
@@ -76,7 +85,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-danger">ELIMINAR PRODUCTO</h5>
+        <h5 class="modal-title text-danger">ELIMINAR CATEGORIA</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -86,12 +95,12 @@
         </form>
         <?php 
         if (isset($_POST["enviar"])) {
-        	$a = ProductosModel::eliminarProducto(array("id"=>$_POST["id"]));
+        	$a = CategoriaModel::eliminarCategoria(array("id"=>$_POST["id"]));
         	if ($a) {
-        		header("location:/listaProductos/success_eliminar");
+        		header("location:/listaCategorias/success_eliminar");
         	}
         	else{
-        		header("location:/listaProductos/error_eliminar");
+        		header("location:/listaCategorias/error_eliminar");
         	}
         }
          ?>

@@ -16,6 +16,15 @@
 		)
 	</script>
 <?php endif; ?>
+<?php if(isset($_GET["id"]) AND $_GET['id'] == "success_eliminar"): ?>
+	<script>
+		Swal.fire(
+		  'Eliminado exitosamente!',
+		  'Cliente Eliminado!',
+		  'success'
+		)
+	</script>
+<?php endif; ?>
 <main class="container mt-3">
 	<h1 class="text-light">LISTA DE Clientes</h1>
 	<!-- el contenido de la pagina  -->

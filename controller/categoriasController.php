@@ -4,8 +4,8 @@ class CategoriaController
 	public function setCategoria($tipo)
 	{
 
-		$nameCategoria = $_POST["nameCategoria"];
-		$array = ["nameCategoria"=>$nameCategoria];
+		$categoria = $_POST["categoria"];
+		$array = ["categoria"=>$categoria];
 		if ($tipo == "editar") {
 			$array["id"] = $_POST["id"];
 			$respuesta = CategoriaModel::editarCategoria($array);

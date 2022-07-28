@@ -4,7 +4,7 @@
 			<h1>Crear categoría</h1>
 			<div class="col-12">
 				<label for="">Nombre categoría</label>
-				<input class="controls form-control" type="text" name="nameCategoria">
+				<input class="controls form-control" type="text" name="categoria">
 			</div>
 
 			<div>

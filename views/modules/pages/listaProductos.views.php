@@ -16,6 +16,15 @@
 		)
 	</script>
 <?php endif; ?>
+<?php if(isset($_GET["id"]) AND $_GET['id'] == "success_eliminar"): ?>
+	<script>
+		Swal.fire(
+		  'Eliminado exitosamente!',
+		  'Producto Eliminado!',
+		  'success'
+		)
+	</script>
+<?php endif; ?>
 <main class="container mt-3">
 	<h1 class="text-light">LISTA DE PRODUCTOS</h1>
 	<!-- el contenido de la pagina  -->
@@ -28,7 +37,7 @@
 			<th>Categoría</th>
 			<th>Acciones</th>
 		</tr>
-		<?php 
+		<?php
 					if (count($listaProductos) == 0) {
 						echo "
 							<tr>
@@ -53,7 +62,7 @@
 				    <li><a class="dropdown-item link-primary fw-bold" href="/editarProducto/<?= $value["id"] ?>"> <i class="fas fa-edit"></i> Editar</a></li>
 				    <li>
 				    	<a class="dropdown-item link-danger fw-bold" data-bs-toggle="modal" data-bs-target="#modal-eliminar" 
-				    	onclick="modalEliminar(<?= $value["id"] ?>,'<?= $value["nameProd"] ?>')"> 
+				    	onclick="modalEliminar(<?= $value["id"] ?>,'<?= $value["name"] ?>')"> 
 				    		<i class="fas fa-times"></i> Eliminar
 				    	</a>
 				    </li>
@@ -103,13 +112,3 @@
     </div>
   </div>
 </div>
-
-<?php 
-	foreach ($listaProductos as $key => $value) {
-		echo "<span></span>";
-	}
- ?>
-
- <?php foreach ($listaProductos as $key => $value): ?>
-		<span></span>
-	<?php endforeach; ?>

@@ -17,11 +17,13 @@ class ProductosModel
 			return false;
 		}
 	}
-	public static function editarProductos($array)
+	public static function editarProducto($array)
 	{
-		$sql = Conexion::conectar()->prepare("UPDATE productos SET nameProd = :nameProd, tipo = :tipo");
-		$sql->bindParam(":nameProd",$array["nameProd"],PDO::PARAM_STR);
-		$sql->bindParam(":tipo",$array["tipo"],PDO::PARAM_STR);
+		$sql = Conexion::conectar()->prepare("UPDATE productos SET name = :name, idCategoria = :idCategoria, stock = :stock WHERE id = :id");
+		$sql->bindParam(":id",$array["id"],PDO::PARAM_INT);
+		$sql->bindParam(":name",$array["name"],PDO::PARAM_STR);
+		$sql->bindParam(":idCategoria",$array["idCategoria"],PDO::PARAM_INT);
+		$sql->bindParam(":stock",$array["stock"],PDO::PARAM_INT);
 
 		if($sql->execute()){
 			return true;
@@ -30,7 +32,7 @@ class ProductosModel
 			return false;
 		}
 	}
-	public static function getProductoById($array){
+	public static function getProductById($array){
 		$sql = Conexion::conectar()->prepare("SELECT * FROM productos WHERE id = :id ORDER BY id DESC");
 		$sql->bindParam(":id",$array["id"],PDO::PARAM_INT);
 
@@ -43,7 +45,7 @@ class ProductosModel
 		return $respuesta;
 	}
 	public static function listaProducto(){
-		$sql = Conexion::conectar()->prepare("SELECT * FROM productos as prod INNER JOIN categorias as cat ON prod.idCategoria = cat.id ORDER BY prod.id DESC");
+		$sql = Conexion::conectar()->prepare("SELECT prod.id,prod.name,prod.stock,cat.categoria FROM productos as prod INNER JOIN categorias as cat ON prod.idCategoria = cat.id GROUP BY prod.id ORDER BY prod.id DESC");
 		if( $sql->execute()){
 			$respuesta = $sql->fetchAll();
 		}
@@ -52,7 +54,7 @@ class ProductosModel
 		}
 		return $respuesta;
 	}
-	public static function eliminarProductos($array){
+	public static function eliminarProducto($array){
 		$sql = Conexion::conectar()->prepare("DELETE FROM productos WHERE id = :id");
 		$sql->bindParam(":id",$array["id"],PDO::PARAM_INT);
 

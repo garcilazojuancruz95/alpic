@@ -10,7 +10,7 @@
 class ProductosController
 {
 	//funcion o metodo
-	public function setProductos($tipo)
+	public function setProducto($tipo)
 	{
 		var_dump($_POST);
 		$name = $_POST["name"];
