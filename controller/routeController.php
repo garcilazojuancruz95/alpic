@@ -5,7 +5,7 @@
 		public static function enlace()
 		{
 			//lista de paginas permitidas 
-			$arrayPages = ["crearCliente","index","listaClientes","login","editarCliente","crearProducto","listaProductos","listaCategorias","editarProducto","crearCategoria","editarCategoria"];
+			$arrayPages = ["crearCliente","index","listaClientes","login","editarCliente","crearProducto","listaProductos","listaCategorias","editarProducto","crearCategoria","editarCategoria","asignarPrestamo"];
 			//si existe action
 			if (isset($_GET["action"])) {
 				if (in_array($_GET["action"], $arrayPages) == true) {

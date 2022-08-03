@@ -36,28 +36,28 @@
             return $respuesta;
         }
         public static function eliminarCategoria($array){
-        $sql = Conexion::conectar()->prepare("DELETE FROM categorias WHERE id = :id");
-        $sql->bindParam(":id",$array["id"],PDO::PARAM_INT);
+            $sql = Conexion::conectar()->prepare("DELETE FROM categorias WHERE id = :id");
+            $sql->bindParam(":id",$array["id"],PDO::PARAM_INT);
 
-        if( $sql->execute()){
-            $respuesta = true;
-        }
-        else{
-            $respuesta = false;
-        }
-        return $respuesta;
+            if( $sql->execute()){
+                $respuesta = true;
+            }
+            else{
+                $respuesta = false;
+            }
+            return $respuesta;
         }
         public static function getCategoriaById($array){
-        $sql = Conexion::conectar()->prepare("SELECT * FROM categorias WHERE id = :id ORDER BY id DESC");
-        $sql->bindParam(":id",$array["id"],PDO::PARAM_INT);
+            $sql = Conexion::conectar()->prepare("SELECT * FROM categorias WHERE id = :id ORDER BY id DESC");
+            $sql->bindParam(":id",$array["id"],PDO::PARAM_INT);
 
-        if( $sql->execute()){
-            $respuesta = $sql->fetch();
-        }
-        else{
-            $respuesta = 0;
-        }
-        return $respuesta;
+            if( $sql->execute()){
+                $respuesta = $sql->fetch();
+            }
+            else{
+                $respuesta = 0;
+            }
+            return $respuesta;
         }
     }
     
