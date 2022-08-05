@@ -10,6 +10,33 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 		)
 	</script>
 <?php endif; ?>
+<?php if(isset($_GET["id"]) AND $_GET['id'] == "success_fecha_editar"): ?>
+	<script>
+		Swal.fire(
+		  'Fecha editada!',
+		  'Exito al editar la fecha del prestamo a un cliente!',
+		  'success'
+		)
+	</script>
+<?php endif; ?>
+<?php if(isset($_GET["id"]) AND $_GET['id'] == "success_finalizar"): ?>
+	<script>
+		Swal.fire(
+		  'Prestamo finalizado!',
+		  'Los productos fueron devueltos por el cliente!',
+		  'success'
+		)
+	</script>
+<?php endif; ?>
+<?php if(isset($_GET["id"]) AND $_GET['id'] == "error_finalizar"): ?>
+	<script>
+		Swal.fire(
+		  'Prestamo error!',
+		  'Error inesperado al intentar finalizar el prestamo!',
+		  'error'
+		)
+	</script>
+<?php endif; ?>
 
 <main class="container mt-3">
 	<!-- el contenido de la pagina  -->
@@ -21,6 +48,7 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 				<tr class="text-light">
 					<th>id</th>
 					<th>Cliente</th>
+					<th>ESTADO</th>
 					<th>Fecha de creacion</th>
 					<th>Fecha de devolucion</th>
 					<th>Prestamo #1</th>
@@ -41,6 +69,11 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 				<tr class="text-light">
 					<td><?= $value["id"] ?></td>
 					<td><?= $value["name"] ?></td>
+					<?php if ($value["estado"] == "asignado"): ?>
+						<td class="fs-5 text-warning"><?= $value["estado"] ?></td>	
+					<?php elseif ($value["estado"] == "finalizado"): ?>	
+						<td class="fs-5 text-success"><?= $value["estado"] ?></td>	
+					<?php endif ?>
 					<td>
 						<?= $value["fecha"] ?>
 					</td>
@@ -49,7 +82,7 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 						if ($value["fechaDevolucion"] == date("Y-m-d")) {
 							echo '<div class="border border-2 border-danger d-inline-block rounded-circle d-inline-flex align-items-center bg-light justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="DEVOLUCION HOY!" style="height:30px;width:30px;"><i class="fas fa-exclamation text-danger fa-lg "></i></div>';
 						}
-						 ?>
+						?>
 
 					</td>
 					<?php 
@@ -57,8 +90,8 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 						$contador = 0;
 					?>
 
-					<?php foreach ($prestamoLista as $key => $value): ?>
-						<td><?= $value["name"]."(".$value["cantidad"].")" ?></td>
+					<?php foreach ($prestamoLista as $key => $value_lista): ?>
+						<td><?= $value_lista["name"]."(".$value_lista["cantidad"].")" ?></td>
 						<?php $contador++ ?>
 					<?php endforeach ?>
 
@@ -73,14 +106,19 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 						  </a>
 
 						  <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
-						    <li><a class="dropdown-item link-primary fw-bold" href="/editarCategoria/<?= $value["id"] ?>"> <i class="fas fa-edit"></i> Editar</a></li>
+						    <li><a class="dropdown-item link-primary fw-bold" href="/editarPrestamo/<?= $value["id"] ?>"> <i class="fas fa-edit"></i> Editar</a></li>
 						    <li>
 						    	<a class="dropdown-item link-danger fw-bold" data-bs-toggle="modal" data-bs-target="#modal-eliminar" 
-						    	onclick="modalEliminar(<?= $value["id"] ?>,'<?= $value["categoria"] ?>')"> 
+						    	onclick="modalEliminar(<?= $value["id"] ?>,'<?= $value["id"] ?>')"> 
 						    		<i class="fas fa-times"></i> Eliminar
 						    	</a>
 						    </li>
-						    <li><a class="dropdown-item" href="#"></a></li>
+						    <?php if ($value["estado"] != "finalizado"): ?>
+						    <li><a class="dropdown-item link-success fw-bold" data-bs-toggle="modal" data-bs-target="#modal-finalizar" 
+						    	onclick="modalFinalizar(<?= $value["id"] ?>,'<?= $value["name"] ?>')"> 
+						    		<i class="fas fa-check"></i> Finalizar prestamo
+						    	</a></li>
+						    <?php endif ?>
 						  </ul>
 						</div>
 						</td>
@@ -90,3 +128,43 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 		</div>
 	</section>
 </main>
+<script>
+	function modalFinalizar(id,cliente){
+		document.querySelector("#modal-finalizar #input-id").value = id;
+		document.querySelector("#modal-finalizar .modal-body .text-1 b").innerHTML = id;
+		document.querySelector("#modal-finalizar .modal-body .text-2 b").innerHTML = cliente;
+	}
+</script>
+
+<div class="modal" id="modal-finalizar" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-success">FINALIZAR PRESTAMO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-1">Estas a punto de finalizar el siguiente prestamo: #<b style="text-transform: capitalize;"></b>.</p>
+        <p class="text-2">Para el cliente: <b style="text-transform: capitalize;"></b>.</p>
+        <form method="post" id="form-finalizar">
+        	<input type="hidden" name="id" value="" id="input-id">
+        </form>
+        <?php 
+        if (isset($_POST["enviar"])) {
+        	$a = PrestamosModel::finalizarPrestamo(array("id"=>$_POST["id"]));
+        	if ($a) {
+        		header("location:/index/success_finalizar");
+        	}
+        	else{
+        		header("location:/index/error_finalizar");
+        	}
+        }
+         ?>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" name="enviar" form="form-finalizar">Finalizar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

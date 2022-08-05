@@ -18,7 +18,8 @@
 				</div>
 				<div class="col-4">
 					<label for="">Fecha devolucion</label>
-					<input type="date" name="fechaDevolucion" class="form-control">
+					
+					<input type="date" name="fechaDevolucion" class="form-control text-center">
 				</div>
 			</div>
 			<div class="col-8 row px-0">
