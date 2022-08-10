@@ -7,11 +7,10 @@ footer {
   background-color: #0a141d;
 }
 .pie-pagina .grupo-1 {
-  width: 100%;
-  max-width: 1200px;
+  width: 84%;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 3fr 4fr 3fr;
   grid-gap: 50px;
   padding: 20px 0px;
 }
@@ -26,12 +25,12 @@ footer {
 .pie-pagina .grupo-1 .box h2 {
   color: #fff;
   margin-bottom: 15px;
-  font-size: 20px;
+  font-size: 17px;
 }
 .pie-pagina .grupo-1 .box p {
   color: #efefef;
   margin-bottom: 8px;
-  font-size: 17px;
+  font-size: 14px;
 }
 .pie-pagina .grupo-1 .red-social a {
   display: inline-block;
@@ -50,12 +49,12 @@ footer {
 }
 .pie-pagina .grupo-2 {
   background-color: #0a1a2a;
-  padding: 9px 5px;
+  padding: 5px 5px;
   text-align: center;
   color: #fff;
 }
 .pie-pagina .grupo-2 small {
-  font-size: 15px;
+  font-size: 12px;
 }
 
 @media screen and (max-width: 800px) {
@@ -63,7 +62,7 @@ footer {
     width: 90%;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 30px;
-    padding: 35px 0px;
+    padding: 10px 0px;
   }
 }
 /*Estilos para todas las paginas, cuando login.scss tiene estilos solamente para login, en general deberiamos poner estilos que afecta a login.views, productos.views, usuarios.views etc etc*/
@@ -90,7 +89,7 @@ input {
 }
 
 main {
-  min-height: calc(100vh - 314px);
+  min-height: calc(100vh - 270px);
 }
 
 .login-box {

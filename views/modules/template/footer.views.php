@@ -7,8 +7,7 @@
             </div>
             <div class="box">
                 <h2>Sobre Nosotros</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, magni.</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, magni.</p>
+                <p>ALPIC es una organización sin fines de lucro que se dedica a prestar elementos ortopédicos y bridar atención gratuita a centenares de pacientes de la ciudad.</p>
             </div>
             <div class="box">
                 <h2>Contactanos</h2>
