@@ -128,6 +128,8 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 		</div>
 	</section>
 </main>
+
+<!--/// MODAL FINALIZAR ///-->
 <script>
 	function modalFinalizar(id,cliente){
 		document.querySelector("#modal-finalizar #input-id").value = id;
@@ -135,7 +137,6 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 		document.querySelector("#modal-finalizar .modal-body .text-2 b").innerHTML = cliente;
 	}
 </script>
-
 <div class="modal" id="modal-finalizar" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -146,11 +147,12 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
       <div class="modal-body">
         <p class="text-1">Estas a punto de finalizar el siguiente prestamo: #<b style="text-transform: capitalize;"></b>.</p>
         <p class="text-2">Para el cliente: <b style="text-transform: capitalize;"></b>.</p>
+        <p class="text-center border border-1 border-secondary"><b>nota</b>: finalizar prestamo <u>no elimina</u> el registro, solamente lo marca como finalizado, si quiere eliminar totalmente utilize la funcionar <span class="text-danger fw-bold">Eliminar Prestamo</span>.</p>
         <form method="post" id="form-finalizar">
         	<input type="hidden" name="id" value="" id="input-id">
         </form>
         <?php 
-        if (isset($_POST["enviar"])) {
+        if (isset($_POST["finalizar"])) {
         	$a = PrestamosModel::finalizarPrestamo(array("id"=>$_POST["id"]));
         	if ($a) {
         		header("location:/index/success_finalizar");
@@ -162,7 +164,46 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
          ?>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-success" name="enviar" form="form-finalizar">Finalizar</button>
+        <button type="submit" class="btn btn-success" name="finalizar" form="form-finalizar">Finalizar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--/// MODAL ELIMINAR ///-->
+<script>
+	function modalEliminar(id,nombre){
+		document.querySelector("#modal-eliminar #input-id").value = id;
+		document.querySelector("#modal-eliminar .modal-body p b").innerHTML = "#"+nombre;
+	}
+</script>
+<div class="modal" id="modal-eliminar" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger">ELIMINAR PRESTAMO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Estas a punto de eliminar el prestamo <b style="text-transform: capitalize;"></b>.</p>
+        <form method="post" id="form-eliminar">
+        	<input type="hidden" name="id" value="" id="input-id">
+        </form>
+        <?php 
+        if (isset($_POST["eliminar"])) {
+        	$a = PrestamosModel::eliminarPrestamo(array("id"=>$_POST["id"]));
+        	if ($a) {
+        		header("location:/index/success_eliminar");
+        	}
+        	else{
+        		header("location:/index/error_eliminar");
+        	}
+        }
+         ?>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger" name="eliminar" form="form-eliminar">Eliminar</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>

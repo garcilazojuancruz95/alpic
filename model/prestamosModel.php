@@ -26,6 +26,39 @@
                 return false;
             }
         }
+        public static function eliminarPrestamo($array)
+        {
+            $sql = Conexion::conectar()->prepare("DELETE FROM prestamos WHERE id = :id");
+			$sql->bindParam(":id",$array["id"],PDO::PARAM_INT);
+
+			if( $sql->execute()){
+				$respuesta = true;
+			}
+			else{
+				$respuesta = false;
+			}
+			return $respuesta;
+	    }
+	    public static function stockPrestamos(){
+	    	$sql = Conexion::conectar()->prepare("SELECT SUM(pl.cantidad) as cantidad,pl.prestamo FROM prestamos as p INNER JOIN prestamo_lista as pl ON pl.idPrestamo = p.id WHERE p.estado = 'asignado' GROUP BY pl.prestamo");
+	    	if( $sql->execute()){
+				$respuesta = $sql->fetchAll();
+			}
+			else{
+				$respuesta = false;
+			}
+			return $respuesta;
+	    }
+	    public static function stockProductos(){
+	    	$sql = Conexion::conectar()->prepare("SELECT productos.stock,productos.id FROM productos");
+	    	if( $sql->execute()){
+				$respuesta = $sql->fetchAll();
+			}
+			else{
+				$respuesta = false;
+			}
+			return $respuesta;
+	    }
         public static function finalizarPrestamo($array)
         {
             $sql = Conexion::conectar()->prepare("UPDATE prestamos SET estado = 'finalizado' WHERE id = :id");
