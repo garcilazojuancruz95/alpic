@@ -60,7 +60,7 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 					if (count($lista) == 0) {
 						echo "
 							<tr>
-								<td colspan='3' class='text-center fw-bold py-3'> Ninguna categoria encontrada.</td>
+								<td colspan='3' class='text-center fw-bold py-3'> Ningún prestamo encontrado.</td>
 							</tr>
 						 ";
 					}

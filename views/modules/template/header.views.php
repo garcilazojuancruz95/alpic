@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<title>Document</title>
+	<title>ALPIC</title>
 </head>
 <script>
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -38,17 +38,6 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/crearCliente">Crear cliente</a></li>
             <li><a class="dropdown-item" href="/listaClientes">Lista cliente</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#"></a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-success fw-semibold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            PRODUCTOS
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/crearProducto">Crear producto</a></li>
-            <li><a class="dropdown-item" href="/listaProductos">Lista de producto</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -58,6 +47,15 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/crearCategoria">Crear categoría</a></li>
             <li><a class="dropdown-item" href="/listaCategorias">Lista de Categorias</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-success fw-semibold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            PRODUCTOS
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/crearProducto">Crear producto</a></li>
+            <li><a class="dropdown-item" href="/listaProductos">Lista de producto</a></li>
           </ul>
         </li>
         <li class="nav-item">
