@@ -42,7 +42,6 @@
 							}
 						}
 					}
-					echo "<pre>"; var_dump($arrayProducto); echo "</pre>";
 					 ?>
 			<div class="col-8 row px-0">
 				<div class="col-8">

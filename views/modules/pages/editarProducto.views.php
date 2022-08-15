@@ -4,7 +4,7 @@
 	<form class="container" method="post">
 		<input type="hidden" value="<?= $_GET["id"] ?>" name="id">
 		<div class="row justify-content-center">
-			<h1>Cargar producto</h1>
+			<h1>Editar producto</h1>
 			<div class="col-11">
 				<label for="">Producto</label>
 				<input class="controls form-control" type="text" value="<?= $product["name"] ?>" name="name">
