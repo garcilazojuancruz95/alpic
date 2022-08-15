@@ -25,7 +25,7 @@
 		)
 	</script>
 <?php endif; ?>
-<main class="container mt-3">
+<main class="container mt-3 text-light">
 	<h1 class="text-light">LISTA DE PRODUCTOS</h1>
 	<!-- el contenido de la pagina  -->
 	<?php $listaProductos = ProductosModel::listaProducto();?>
@@ -46,11 +46,35 @@
 						 ";
 					}
 				 ?>
+			<?php 
+				$stockPrestamos = PrestamosModel::stockPrestamos();
+				$stockProductos = PrestamosModel::stockProductos();
+				$arrayPrestamo = [];
+				$arrayProducto = [];
+				foreach($stockPrestamos as $key => $value){
+					$arrayPrestamo[$value["prestamo"]] = $value["cantidad"]; 
+				}
+				foreach($stockProductos as $key => $value){
+					$arrayProducto[$value["id"]] = $value["stock"]; 
+				}
+
+				foreach ($arrayProducto as $key => $value) {
+					if (isset($arrayPrestamo[$key])) {
+						$arrayProducto[$key] = $arrayProducto[$key] - $arrayPrestamo[$key];
+						if ($arrayProducto[$key] < 1) {
+							$arrayProducto[$key] = "sin stock";
+						}
+					}
+					else{
+						$arrayProducto[$key] = ($value == 0) ? "sin stock" : $value;
+					}
+				}
+			 ?>
 	<?php foreach ($listaProductos as $key => $value): ?>
 		<tr class="text-light">
 			<td><?= $value["id"] ?></td>
 			<td><?= $value["name"] ?></td>
-			<td><?= $value["stock"] ?></td>
+			<td><?= $arrayProducto[$value["id"]] ?></td>
 			<td><?= $value["categoria"] ?></td>
 			<td>
 				<div class="dropdown">

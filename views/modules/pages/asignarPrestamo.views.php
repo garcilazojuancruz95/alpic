@@ -22,16 +22,40 @@
 					<input type="date" name="fechaDevolucion" class="form-control text-center">
 				</div>
 			</div>
+					<?php 
+					$stockPrestamos = PrestamosModel::stockPrestamos();
+					$stockProductos = PrestamosModel::stockProductos();
+					$arrayPrestamo = [];
+					$arrayProducto = [];
+					foreach($stockPrestamos as $key => $value){
+						$arrayPrestamo[$value["prestamo"]] = $value["cantidad"]; 
+					}
+					foreach($stockProductos as $key => $value){
+						$arrayProducto[$value["id"]] = $value["stock"]; 
+					}
+
+					foreach ($arrayProducto as $key => $value) {
+						if (isset($arrayPrestamo[$key])) {
+							$arrayProducto[$key] = $arrayProducto[$key] - $arrayPrestamo[$key];
+							if ($arrayProducto[$key] < 1) {
+								$arrayProducto[$key] = "sin stock";
+							}
+						}
+					}
+					echo "<pre>"; var_dump($arrayProducto); echo "</pre>";
+					 ?>
 			<div class="col-8 row px-0">
 				<div class="col-8">
-					
 					<label for="">Prestamo #1</label>
 					<select name="prestamo[]" class="form-control">
 						<option value="-1">Elija una opcion</option>
-						<?php 
+						<?php
+
 							$listaProducto = ProductosModel::listaProducto();
 							foreach ($listaProducto as $key => $value) {
-								echo "<option value='".$value["id"]."'>".$value["name"]."</option>";
+								if ($arrayProducto[$value["id"]] != "sin stock") {
+									echo "<option value='".$value["id"]."'>".$value["name"]."</option>";
+								}
 							}
 						 ?>
 					</select>
